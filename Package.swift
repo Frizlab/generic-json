@@ -1,24 +1,19 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.8
 import PackageDescription
 
+
+
+let commonSwiftSettings: [SwiftSetting] = [
+	.enableExperimentalFeature("StrictConcurrency")
+]
+
 let package = Package(
-  name: "GenericJSON",
-  products: [
-    .library(
-      name: "GenericJSON",
-      targets: ["GenericJSON"]),
-  ],
-  dependencies: [],
-  targets: [
-    .target(
-      name: "GenericJSON",
-      dependencies: [],
-      path: "GenericJSON"
-    ),
-    .testTarget(
-      name: "GenericJSONTests",
-      dependencies: ["GenericJSON"],
-      path: "GenericJSONTests"
-    )
-  ]
+	name: "GenericJSON",
+	products: [
+		.library(name: "GenericJSON", targets: ["GenericJSON"]),
+	],
+	targets: [
+		.target(name: "GenericJSON", path: "GenericJSON", swiftSettings: commonSwiftSettings),
+		.testTarget(name: "GenericJSONTests", dependencies: ["GenericJSON"], path: "GenericJSONTests", swiftSettings: commonSwiftSettings)
+	]
 )
