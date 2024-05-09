@@ -5,7 +5,7 @@ import XCTest
 
 
 
-class EqualityTests: XCTestCase {
+class EqualityTests : XCTestCase {
 	
 	func testEquality() {
 		XCTAssertEqual(              [] as JSON,               [] as JSON)

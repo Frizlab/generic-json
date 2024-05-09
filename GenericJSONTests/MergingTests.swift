@@ -5,7 +5,7 @@ import XCTest
 
 
 
-class MergingTests: XCTestCase {
+class MergingTests : XCTestCase {
 	
 	func testMerging() {
 		let old: JSON = ["x": "y"]

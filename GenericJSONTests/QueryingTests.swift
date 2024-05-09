@@ -5,7 +5,7 @@ import XCTest
 
 
 
-class QueryingTests: XCTestCase {
+class QueryingTests : XCTestCase {
 	
 	func testStringValue() {
 		XCTAssertEqual(JSON.string("foo").stringValue, "foo")
