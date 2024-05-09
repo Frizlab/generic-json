@@ -33,7 +33,7 @@ class CodingTests : XCTestCase {
 	
 	func testDecoding() throws {
 		let input = #"{"array":[1],"num":1,"bool":true,"obj":{},"null":null,"str":"baz"}"#
-		let json = try! JSONDecoder().decode(JSON.self, from: Data(input.utf8))
+		let json = try JSONDecoder().decode(JSON.self, from: Data(input.utf8))
 		XCTAssertEqual(json, [
 			"num": 1,
 			"str": "baz",

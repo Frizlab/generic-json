@@ -80,14 +80,14 @@ class InitializationTests: XCTestCase {
 		let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: [])
 		let json = try JSON(jsonObject)
 		
-		XCTAssertEqual(json["array"]!,           JSON.array([1, 2, 3]))
-		XCTAssertEqual(json["boolean"]!,         JSON.bool(true))
-		XCTAssertEqual(json["number"]!,          JSON.number(1))
-		XCTAssertEqual(json["greatest_int"]!,    JSON.number(Double(Int.max)))
-		XCTAssertEqual(json["greatest_double"]!, JSON.number(Double.greatestFiniteMagnitude))
-		XCTAssertEqual(json["null"]!,            JSON.null)
-		XCTAssertEqual(json["object"]!,          JSON.object(["a": "b"]))
-		XCTAssertEqual(json["string"]!,          JSON.string("Hello World"))
+		XCTAssertEqual(try XCTUnwrap(json["array"]),           JSON.array([1, 2, 3]))
+		XCTAssertEqual(try XCTUnwrap(json["boolean"]),         JSON.bool(true))
+		XCTAssertEqual(try XCTUnwrap(json["number"]),          JSON.number(1))
+		XCTAssertEqual(try XCTUnwrap(json["greatest_int"]),    JSON.number(Double(Int.max)))
+		XCTAssertEqual(try XCTUnwrap(json["greatest_double"]), JSON.number(Double.greatestFiniteMagnitude))
+		XCTAssertEqual(try XCTUnwrap(json["null"]),            JSON.null)
+		XCTAssertEqual(try XCTUnwrap(json["object"]),          JSON.object(["a": "b"]))
+		XCTAssertEqual(try XCTUnwrap(json["string"]),          JSON.string("Hello World"))
 		
 	}
 	
