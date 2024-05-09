@@ -3,16 +3,16 @@ import Foundation
 
 
 private struct InitializationError : Error {}
-extension JSON {
+public extension JSON {
 	
 	/** 
 	 Create a JSON value from anything.
 	 
 	 Argument has to be a valid JSON structure:
-	  A `Double`, `Int`, `String`, `Bool`, an `Array` of those types or a `Dictionary` of those types.
+	  a `Double`, `Int`, `String`, `Bool`, an `Array` of those types or a `Dictionary` of those types.
 	 
 	 You can also pass `nil` or `NSNull`, both will be treated as `.null`. */
-	public init(_ value: Any) throws {
+	init(_ value: Any) throws {
 		switch value {
 			case _ as NSNull:                               self = .null
 			case let opt as Optional<Any> where opt == nil: self = .null
@@ -27,15 +27,11 @@ extension JSON {
 		}
 	}
 	
-}
-
-extension JSON {
-	
 	/**
 	 Create a JSON value from an `Encodable`.
 	 
 	 This will give you access to the “raw” encoded JSON value the `Encodable` is serialized into. */
-	public init<T: Encodable>(encodable: T) throws {
+	init<T: Encodable>(encodable: T) throws {
 		let encoded = try JSONEncoder().encode(encodable)
 		self = try JSONDecoder().decode(JSON.self, from: encoded)
 	}
@@ -106,26 +102,25 @@ extension JSON : ExpressibleByStringLiteral {
    MARK: - NSNumber
    **************** */
 
-extension NSNumber {
+fileprivate extension NSNumber {
 	
 	/**
 	 Boolean value indicating whether this `NSNumber` wraps a boolean.
 	 
 	 For example, when using `NSJSONSerialization` `Bool` values are converted into `NSNumber` instances.
 	 
-	 - SeeAlso: <https://stackoverflow.com/a/49641315/3589408> */
-	fileprivate var isBool: Bool {
-		let objCType = String(cString: self.objCType)
+	 - SeeAlso: <https://stackoverflow.com/a/49641315> */
+	var isBool: Bool {
+		let objCType = String(cString: objCType)
 		return (
-			(self.compare(trueNumber)  == .orderedSame && objCType == trueObjCType) ||
-			(self.compare(falseNumber) == .orderedSame && objCType == falseObjCType)
+			(compare(Self .trueNumber) == .orderedSame && objCType == Self .trueObjCType) ||
+			(compare(Self.falseNumber) == .orderedSame && objCType == Self.falseObjCType)
 		)
 	}
 	
+	private static let  trueNumber = NSNumber(value: true)
+	private static let falseNumber = NSNumber(value: false)
+	private static let  trueObjCType = String(cString:  trueNumber.objCType)
+	private static let falseObjCType = String(cString: falseNumber.objCType)
+	
 }
-
-
-private let trueNumber = NSNumber(value: true)
-private let falseNumber = NSNumber(value: false)
-private let trueObjCType = String(cString: trueNumber.objCType)
-private let falseObjCType = String(cString: falseNumber.objCType)

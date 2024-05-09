@@ -2,7 +2,7 @@ import Foundation
 
 
 
-extension JSON {
+public extension JSON {
 	
 	/**
 	 Return a new JSON value by merging two other ones.
@@ -13,7 +13,7 @@ extension JSON {
 	    1. Add keys from `old` not present in `new` (“no change” case);
 	    2. Add keys from `new` not present in `old` (“create” case);
 	    3. For keys present in both `old` and `new`, apply merge recursively to their values (“update” case). */
-	public func merging(with new: JSON) -> JSON {
+	func merging(with new: JSON) -> JSON {
 		/* If old or new are anything but an object, return new. */
 		guard case .object(let lhs) = self,
 				case .object(let rhs) = new

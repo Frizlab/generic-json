@@ -71,14 +71,6 @@ public extension JSON {
 	}
 	
 	/**
-	 Dynamic member lookup sugar for string subscripts.
-	 
-	 This lets you write `json.foo` instead of `json["foo"]`. */
-	subscript(dynamicMember member: String) -> JSON? {
-		return self[member]
-	}
-	
-	/**
 	 Returns the JSON type at the keypath if this is an `.object`, otherwise `nil`.
 	 
 	 This lets you write `json[keyPath: "foo.bar.jar"]`. */
