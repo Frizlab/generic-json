@@ -52,6 +52,11 @@ public extension JSON {
 		return false
 	}
 	
+}
+
+
+public extension JSON {
+	
 	/**
 	 If this is an `.array`, returns the item at the given index.
 	 If this is not an `.array` or the index is out of bounds, returns `nil`. */
