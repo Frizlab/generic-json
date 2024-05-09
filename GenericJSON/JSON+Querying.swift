@@ -73,12 +73,12 @@ public extension JSON {
 	/**
 	 Returns the JSON type at the keypath if this is an `.object`, otherwise `nil`.
 	 
-	 This lets you write `json[keyPath: "foo.bar.jar"]`. */
-	subscript(keyPath keyPath: String) -> JSON? {
-		return queryKeyPath(keyPath.components(separatedBy: "."))
+	 This lets you write `json[keyPath: "foo.bar.jar"]`, or `json[keyPath: "foo/bar/jar", separator: "/"]`. */
+	subscript(keyPath keyPath: String, separator separator: String = ".") -> JSON? {
+		return queryKeyPath(keyPath.components(separatedBy: separator))
 	}
 	
-	func queryKeyPath<T>(_ path: T) -> JSON? where T: Collection, T.Element == String {
+	func queryKeyPath<T>(_ path: T) -> JSON? where T: Collection, T.Element : StringProtocol {
 		/* Only object values may be subscripted. */
 		guard case .object(let object) = self else {
 			return nil
@@ -90,7 +90,7 @@ public extension JSON {
 		}
 		
 		/* Do we have a value at the required key? */
-		guard let value = object[head] else {
+		guard let value = object[String(head)] else {
 			return nil
 		}
 		

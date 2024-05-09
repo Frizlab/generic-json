@@ -84,6 +84,7 @@ class QueryingTests: XCTestCase {
 		XCTAssertEqual(json[keyPath: "object.str"],   "col")
 		XCTAssertEqual(json[keyPath: "object.arr"],   [1, 2, 3])
 		XCTAssertEqual(json[keyPath: "object.obj.y"], "tar")
+		XCTAssertEqual(json[keyPath: "object//str", separator: "//"], "col")
 	}
 	
 }
