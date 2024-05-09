@@ -23,14 +23,6 @@ class CodingTests : XCTestCase {
 		XCTAssertEqual(str, #"{"array":[],"bool":true,"null":null,"num":1,"obj":{},"str":"baz"}"#)
 	}
 	
-//	???: DOES NOT throw errors.
-//	func testFragmentEncoding() {
-//		let fragments: [JSON] = ["foo", 1, true, nil]
-//		for f in fragments {
-//			XCTAssertThrowsError(try JSONEncoder().encode(f))
-//		}
-//	}
-	
 	func testDecoding() throws {
 		let input = #"{"array":[1],"num":1,"bool":true,"obj":{},"null":null,"str":"baz"}"#
 		let json = try JSONDecoder().decode(JSON.self, from: Data(input.utf8))
