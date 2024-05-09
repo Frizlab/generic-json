@@ -2,7 +2,6 @@ import Foundation
 
 
 
-private struct InitializationError : Error {}
 public extension JSON {
 	
 	/** 
@@ -23,7 +22,7 @@ public extension JSON {
 			case let array as [Any]:                        self = .array(try array.map(JSON.init))
 			case let dict as [String: Any]:                 self = .object(try dict.mapValues(JSON.init))
 			default:
-				throw InitializationError()
+				throw Err.valueIsNotJSONCompatible
 		}
 	}
 	
