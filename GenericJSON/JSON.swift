@@ -22,7 +22,7 @@ public enum JSON : Equatable, Hashable, Sendable {
 	 Dynamic member lookup sugar for string subscripts.
 	 
 	 This lets you write `json.foo` instead of `json["foo"]`. */
-	subscript(dynamicMember member: String) -> JSON? {
+	public subscript(dynamicMember member: String) -> JSON? {
 		return self[member]
 	}
 	
