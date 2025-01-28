@@ -5,7 +5,7 @@ import XCTest
 
 
 
-class CodingTests : XCTestCase {
+final class CodingTests : XCTestCase {
 	
 	func testEncoding() throws {
 		let json: JSON = [

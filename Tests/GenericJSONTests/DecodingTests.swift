@@ -5,7 +5,7 @@ import XCTest
 
 
 
-class DecodingTests : XCTestCase {
+final class DecodingTests : XCTestCase {
 	
 	func testDecodeAs() {
 		struct Foo : Decodable, Equatable {var foo: String}

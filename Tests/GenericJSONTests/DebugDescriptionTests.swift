@@ -5,7 +5,7 @@ import XCTest
 
 
 
-class DebugDescriptionTests : XCTestCase {
+final class DebugDescriptionTests : XCTestCase {
 	
 	func testObjectDebugDescription() {
 		let object = JSON.object(["key": "val", "auto": 1])

@@ -110,7 +110,7 @@ fileprivate extension NSNumber {
 	 
 	 - SeeAlso: <https://stackoverflow.com/a/49641315> */
 	var isBool: Bool {
-		let objCType = String(cString: objCType)
+		let objCType = String(cString: self.objCType)
 		return (
 			(compare(Self .trueNumber) == .orderedSame && objCType == Self .trueObjCType) ||
 			(compare(Self.falseNumber) == .orderedSame && objCType == Self.falseObjCType)

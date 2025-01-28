@@ -79,9 +79,18 @@ public extension JSON {
 	 Returns the JSON type at the keypath if this is an `.object`, otherwise `nil`.
 	 
 	 This lets you write `json[keyPath: "foo.bar.jar"]`, or `json[keyPath: "foo/bar/jar", separator: "/"]`. */
+#if swift(>=5.2)
 	subscript(keyPath keyPath: String, separator separator: String = ".") -> JSON? {
 		return queryKeyPath(keyPath.components(separatedBy: separator))
 	}
+#else
+	subscript(keyPath keyPath: String) -> JSON? {
+		return self[keyPath: keyPath, separator: "."]
+	}
+	subscript(keyPath keyPath: String, separator separator: String) -> JSON? {
+		return queryKeyPath(keyPath.components(separatedBy: separator))
+	}
+#endif
 	
 	func queryKeyPath<T>(_ path: T) -> JSON? where T: Collection, T.Element : StringProtocol {
 		/* Only object values may be subscripted. */
