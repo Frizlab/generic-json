@@ -1,4 +1,10 @@
 # Generic JSON
+
+<picture><img alt="Compatible from Swift 5.1 to 6." src="https://img.shields.io/badge/Swift-6.0_%7C_5.10--5.1-blue"></picture>
+<picture><img alt="Compatible with macOS, iOS, visionOS, tvOS and watchOS." src="https://img.shields.io/badge/Platforms-macOS_%7C_iOS_%7C_visionOS_%7C_tvOS_%7C_watchOS-blue"></picture>
+<picture><img alt="Compatible with Linux, Windows, WASI and Android." src="https://img.shields.io/badge/Platforms-Linux_%7C_Windows_%7C_WASI_%7C_Android-blue"></picture>
+[![](<https://img.shields.io/github/v/release/Frizlab/generic-json>)](<https://github.com/xcode-actions/Frizlab/generic-json>)
+
 Generic JSON makes it easy to deal with freeform JSON strings without creating a separate, well-typed structure.
 
 ## Codable and Freeform JSON
