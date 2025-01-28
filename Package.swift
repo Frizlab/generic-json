@@ -3,7 +3,7 @@ import PackageDescription
 
 
 let package = Package(
-	name: "GenericJSON",
+	name: "generic-json",
 	products: [
 		.library(name: "GenericJSON", targets: ["GenericJSON"]),
 	],

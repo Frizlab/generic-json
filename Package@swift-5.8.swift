@@ -6,7 +6,7 @@ import PackageDescription
 let swiftSettings: [SwiftSetting] = [.enableExperimentalFeature("StrictConcurrency")]
 
 let package = Package(
-	name: "GenericJSON",
+	name: "generic-json",
 	products: [
 		.library(name: "GenericJSON", targets: ["GenericJSON"]),
 	],
