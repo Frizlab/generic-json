@@ -5,7 +5,7 @@ import XCTest
 
 
 
-class InitializationTests : XCTestCase {
+final class InitializationTests : XCTestCase {
 	
 	func testLiteralInitialization() {
 		XCTAssertEqual(nil as JSON,           .null)
